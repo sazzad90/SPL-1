@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1645389921 source:e:\programming\spl-1\main.cpp
+	"header.h"
+
+1645389921 e:\programming\spl-1\header.h
+	<bits/stdc++.h>
+
+1645390113 source:e:\programming\spl-1\readimage.cpp
+	"header.h"
+	<fstream>
+
