@@ -32,10 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="binaryToText.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="decimalToBinary.cpp" />
 		<Unit filename="header.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="readImage.cpp" />
+		<Unit filename="textToBinary.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

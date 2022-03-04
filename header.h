@@ -3,3 +3,5 @@ using namespace std;
 
 void readImage(char* path);
 void decimalToBinary(int pixels[][3],int widthOfImage,int heightOfImage);
+int textToBinary(char *textPath, int binary[], int binaryLength);
+void binaryToText(int binaryLength,int binary[]);

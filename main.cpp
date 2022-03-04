@@ -4,7 +4,12 @@ using namespace std;
 
 int main()
 {
-    readImage("demo1.bmp");
+    int binaryLength=0;
+    int binary[100000]={};
+
+    readImage("demo3.bmp");
+    binaryLength= textToBinary("Test1.txt", binary, binaryLength);
+    binaryToText(binaryLength,binary);
 
     return 0;
 }

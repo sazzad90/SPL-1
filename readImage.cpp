@@ -19,10 +19,18 @@ void readImage(char* path)
     if(!file.is_open())
    {
         cout<<"File cannot be read"<<endl;
+        return;
     }
+   /* if(fileHeader[0] != 'B'|| fileHeader[1] != 'M'){
+        cout<<"This is not a Bitmap image"<<endl;
+        return;
+    }
+    */
 
-    file.read(reinterpret_cast<char*>(fileHeader),fileHeaderSize);
-    file.read(reinterpret_cast<char*>(infoHeader),infoHeaderSize);
+
+
+    file.read(reinterpret_cast<char*>(fileHeader),fileHeaderSize);   //this method only takes short pointer/char pointer
+    file.read(reinterpret_cast<char*>(infoHeader),infoHeaderSize);   //this method only takes short pointer/char pointer
 
     int fileSize=fileHeader[2]+(fileHeader[3]<<8)+(fileHeader[4]<<16)+(fileHeader[5]<<24);
     int width=infoHeader[4]+(infoHeader[5]<<8)+(infoHeader[6]<<16)+(infoHeader[7]<<24);
@@ -30,7 +38,8 @@ void readImage(char* path)
 
     const int paddingAmount=((4-(width*3)%4)%4);
 
-    cout<<width<<" "<<height<<endl;
+    cout<<"Image width:: "<<width<<endl;
+    cout<<"Image height:: "<<height<<endl;
 
     for(int i=0;i<height;i++)
     {
@@ -49,15 +58,16 @@ void readImage(char* path)
 
     decimalToBinary(pixels,width,height);
 
-    for(int i=0;i<width;i++)
+ /*   for(int i=0;i<width;i++)
     {
         for(int j=0;j<height;j++)
         {
            cout<<pixels[i*width+j][0]<<" "<<pixels[i*width+j][1]<<" "<<pixels[i*width+j][2]<<"    ";
         }
         cout<<endl;
-    }
-
+    }*/
+    cout<<"File is read."<<endl;
+    cout<<endl;
 
     file.close();
 }
