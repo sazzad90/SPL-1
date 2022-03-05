@@ -66,7 +66,7 @@ void readImage(char* path)
         }
         cout<<endl;
     }*/
-    cout<<"File is read."<<endl;
+    cout<<"Image file is read."<<endl;
     cout<<endl;
 
     file.close();

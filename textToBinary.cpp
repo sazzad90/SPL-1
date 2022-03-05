@@ -20,7 +20,7 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
     }
 
 
-    cout<<"Text before conversion:: ";
+    cout<<"Text before converting to binary:: ";
     cout<<message<<endl;
     cout<<endl;
 
@@ -54,6 +54,9 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
 
         while(temp>=0)
         {
+        if(temp==1){
+            mini[temp] = encryptText(mini[temp]);         //encrypting message altering 0 and 1 at every 7th place
+        }
         binary[length]=mini[temp];
         temp--;
         length++;
@@ -62,7 +65,8 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
 }
        binaryLength=length-1;        //length of binary array
 
-   //    cout<<"Blength: "<<binaryLength<<endl;
+
+    cout<<"Encryption is done."<<endl;
 
     cout<<"Binary format for text::"<<endl;
     for(int i=0;i<length;i++)
