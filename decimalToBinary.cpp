@@ -1,10 +1,7 @@
 #include "header.h"
-
 using namespace std;
-
 void decimalToBinary(int pixels[][3],int widthOfImage,int heightOfImage)
 {
-
     int number;
     int  binary[1000]={0};
     int j=0,k;
@@ -23,7 +20,6 @@ void decimalToBinary(int pixels[][3],int widthOfImage,int heightOfImage)
         number = number/2;
         j++;
        }
-
     int temp=j-1;            //end index for mini
 
     while(temp>=0)
@@ -43,10 +39,8 @@ void decimalToBinary(int pixels[][3],int widthOfImage,int heightOfImage)
     }
 
     index++;
-   // binary[length++]=11111111;  //delimiter
     }
     index=0;
-
     }
 
 }

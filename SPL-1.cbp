@@ -36,6 +36,8 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="decimalToBinary.cpp" />
+		<Unit filename="decryptText.cpp" />
+		<Unit filename="encryptText.cpp" />
 		<Unit filename="header.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="readImage.cpp" />
