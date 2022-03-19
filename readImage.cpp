@@ -10,6 +10,8 @@ unsigned char fileHeader[fileHeaderSize];
 unsigned char infoHeader[infoHeaderSize];
 
 int pixels[10000000][3]={0};
+int width, height;
+
 
 void readImage(char* path)
 {
@@ -26,8 +28,8 @@ void readImage(char* path)
     file.read(reinterpret_cast<char*>(infoHeader),infoHeaderSize);   //this method only takes short pointer/char pointer
 
     int fileSize=fileHeader[2]+(fileHeader[3]<<8)+(fileHeader[4]<<16)+(fileHeader[5]<<24);
-    int width=infoHeader[4]+(infoHeader[5]<<8)+(infoHeader[6]<<16)+(infoHeader[7]<<24);
-    int height=infoHeader[8]+(infoHeader[9]<<8)+(infoHeader[10]<<16)+(infoHeader[11]<<24);
+    width=infoHeader[4]+(infoHeader[5]<<8)+(infoHeader[6]<<16)+(infoHeader[7]<<24);
+    height=infoHeader[8]+(infoHeader[9]<<8)+(infoHeader[10]<<16)+(infoHeader[11]<<24);
 
     const int paddingAmount=((4-(width*3)%4)%4);
 
@@ -46,9 +48,9 @@ void readImage(char* path)
         file.ignore(paddingAmount);
     }
 
-    decimalToBinary(pixels,width,height);
+    decimalToBinary(pixels,width,height);       //converting decimal pixels into binary
 
-
+/*
    for(int i=0;i<width;i++)
     {
         for(int j=0;j<height;j++)
@@ -57,8 +59,8 @@ void readImage(char* path)
         }
         cout<<endl;
     }
+    */
 
-    cout<<endl;
     cout<<"Image width:: "<<width<<endl;
     cout<<"Image height:: "<<height<<endl;
 

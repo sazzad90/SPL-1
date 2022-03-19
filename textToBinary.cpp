@@ -56,15 +56,25 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
         length++;
         }
 }
-    binaryLength=length-1;        //length of binary array
+
+    binaryLength = length;//length of binary array
+
+    //************Adding Delimiter**************//
+    for(int i = 0;i<15; i++){
+        binary[binaryLength++] = 1;
+    }
+
+    binaryLength = binaryLength - 1;  //length of binary array after adding delimiter
+
     cout<<"Encryption is done."<<endl;
     cout<<endl;
 
-    cout<<"Binary format for text::"<<endl;
-    for(int i=0;i<length;i++)
+    cout<<"Binary format for text:: "<<endl;
+    for(int i=0; i <= binaryLength; i++)
     {
     cout<<binary[i];
     }
+
     cout<<endl;
     return binaryLength;
 }
