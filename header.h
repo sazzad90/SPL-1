@@ -7,5 +7,6 @@ int textToBinary(char *textPath, int binary[], int binaryLength);
 void binaryToText(int binaryLength,int binary[]);
 int encryptText(int key);
 int decryptText(int key);
-void copyImageFile();
+void writeImage(int pixels[][3], int width, int height, ofstream &outputFile);
 void hideData(int pixels[][3],int widthOfImage,int heightOfImage,int binary[],int binaryLength);
+void binaryToDecimal(int pixels[][3], int width, int height);

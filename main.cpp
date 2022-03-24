@@ -10,12 +10,15 @@ int main()
     extern int pixels[10000000][3];
     extern int width;
     extern int height;
+    extern ofstream outputFile;
 
-    readImage("demo1.bmp");
+    readImage("demo3.bmp");
     binaryLength = textToBinary("Test1.txt", binary, binaryLength);
     hideData(pixels,width,height,binary,binaryLength);
     binaryToText(binaryLength-15,binary);
-   // copyImageFile();
+    binaryToDecimal(pixels, width, height);
+    writeImage(pixels, width, height, outputFile);
+
 
     return 0;
 }

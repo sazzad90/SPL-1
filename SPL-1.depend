@@ -1,18 +1,18 @@
 # depslib dependency file v1.0
-1647527679 source:e:\programming\spl-1\main.cpp
+1648132813 source:e:\programming\spl-1\main.cpp
 	"header.h"
 
-1647501042 e:\programming\spl-1\header.h
+1648053212 e:\programming\spl-1\header.h
 	<bits/stdc++.h>
 
-1647697571 source:e:\programming\spl-1\readimage.cpp
+1648132834 source:e:\programming\spl-1\readimage.cpp
 	"header.h"
 	<fstream>
 
 1646469081 source:e:\programming\spl-1\decimaltobinary.cpp
 	"header.h"
 
-1646492380 source:e:\programming\spl-1\binarytotext.cpp
+1648052125 source:e:\programming\spl-1\binarytotext.cpp
 	"header.h"
 	<fstream>
 	<math.h>
@@ -27,10 +27,15 @@
 1646463927 source:e:\programming\spl-1\decrypttext.cpp
 	"header.h"
 
-1647498888 source:e:\programming\spl-1\writeimage.cpp
+1648051792 source:e:\programming\spl-1\writeimage.cpp
 	<fstream>
 	"header.h"
 
-1647697349 source:e:\programming\spl-1\hidedata.cpp
+1647785084 source:e:\programming\spl-1\hidedata.cpp
 	"header.h"
+
+1648132606 source:e:\programming\spl-1\binarytodecimal.cpp
+	"header.h"
+	<fstream>
+	<math.h>
 

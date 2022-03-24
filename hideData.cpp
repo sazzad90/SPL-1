@@ -43,7 +43,7 @@ void hideData(int pixels[][3],int widthOfImage,int heightOfImage,int binary[],in
      }
 
 
-   for(int i=0;i<widthOfImage;i++)
+ /*  for(int i=0;i<widthOfImage;i++)
     {
         for(int j=0; j<heightOfImage; j++)
         {
@@ -51,6 +51,7 @@ void hideData(int pixels[][3],int widthOfImage,int heightOfImage,int binary[],in
         }
         cout<<endl;
     }
+    */
 
 
 
