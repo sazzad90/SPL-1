@@ -4,9 +4,8 @@
 
 using namespace std;
 
-void binaryToDecimal(int pixels[][3], int width, int height)
+void binaryToDecimal(int pixels[][1000][3], int width, int height)
 {
-
 
     for(int i=0;i<height;i++)
     {
@@ -16,12 +15,12 @@ void binaryToDecimal(int pixels[][3], int width, int height)
             int k = 0;
             while(k<=2){
             int index = 0;
-            int temp = pixels[i*width+j][k];
-            pixels[i*width+j][k] = 0;
+            int temp = pixels[i][j][k];
+            pixels[i][j][k] = 0;
 
             while(temp){
                 int remainder = temp%10;
-                pixels[i*width+j][k] += pow(2,index) * remainder;
+                pixels[i][j][k] += pow(2,index) * remainder;
                 temp = temp/10;
                 index++;
 
@@ -30,18 +29,8 @@ void binaryToDecimal(int pixels[][3], int width, int height)
             }
         }
     }
-
-
-//       for(int i=0;i<width;i++)
-//    {
-//        for(int j=0;j<height;j++)
-//        {
-//           cout<<pixels[i*width+j][0]<<" "<<pixels[i*width+j][1]<<" "<<pixels[i*width+j][2]<<"    ";
-//        }
-//        cout<<endl;
-//    }
-
 }
+
 
 
 

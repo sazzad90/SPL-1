@@ -15,7 +15,7 @@ void binaryToText(int binaryLength,int binary[])
         while(binaryCnt <= 7){
             if(binaryCnt==6)
             {
-                binary[i] = decryptText(binary[i]);          //decrypting message again altering 0 and 1 at every 7th place
+              //  binary[i] = decryptText(binary[i]);          //decrypting message again altering 0 and 1 at every 7th place
             }
             decimal[index] += pow(2,cnt) * binary[i];
             cnt--;
@@ -34,13 +34,10 @@ void binaryToText(int binaryLength,int binary[])
     }
     text[index]='\0';
 
-    cout<<endl;
-    cout<<"Decryption is done."<<endl;
-    cout<<endl;
-    cout<<"Text after converting from binary:: ";
     cout<<text<<endl;
 
 }
+
 
 
 

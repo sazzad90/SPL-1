@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int textToBinary(char *textPath, int binary[], int binaryLength)
+int textToBinary(const char *textPath, int binary[], int binaryLength)
 {
     string message,space;
     string input;
@@ -18,7 +18,7 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
         message+=input;
     }
     }
-    cout<<"Text before converting to binary:: ";
+    cout<<"Before hiding :: ";
     cout<<message<<endl;
     cout<<endl;
 
@@ -49,7 +49,7 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
         while(temp>=0)
         {
         if(temp==1){
-            mini[temp] = encryptText(mini[temp]); //encrypting message altering 0 and 1 at every 7th place
+          //  mini[temp] = encryptText(mini[temp]); //encrypting message altering 0 and 1 at every 7th place
         }
         binary[length]=mini[temp];
         temp--;
@@ -66,16 +66,5 @@ int textToBinary(char *textPath, int binary[], int binaryLength)
 
     binaryLength = binaryLength - 1;  //length of binary array after adding delimiter
 
-    cout<<"Encryption is done."<<endl;
-    cout<<endl;
-
-    cout<<"Binary format for text:: "<<endl;
-    for(int i=0; i <= binaryLength; i++)
-    {
-    cout<<binary[i];
-    }
-
-    cout<<endl;
     return binaryLength;
 }
-
