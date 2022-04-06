@@ -14,17 +14,28 @@ void drawWindow(){
     int click[2];
     int x,y;
 
-    initwindow(width, height, "");
+    initwindow(800, 600, "");
 
     setcolor(LIGHTGRAY);
     rectangle(200,200,300,250);
     setfillstyle(SOLID_FILL, LIGHTGRAY);
     floodfill(201,201, LIGHTGRAY);
 
+    setcolor(BLACK);
+    setbkcolor(LIGHTGRAY);
+    settextstyle(3,4, 3);
+    outtextxy(280, 240, "Encode");
+    
+
     setcolor(LIGHTGRAY);
-    rectangle(300,200,400,250);
+    rectangle(200,300,300,350);
     setfillstyle(SOLID_FILL, LIGHTGRAY);
-    floodfill(301,201, LIGHTGRAY);
+    floodfill(201,301, LIGHTGRAY);
+
+     setcolor(BLACK);
+    setbkcolor(LIGHTGRAY);
+    settextstyle(3,4, 3);
+    outtextxy(280, 340, "Decode");
 
     while(1){
       getMouseClick(click);
@@ -33,9 +44,9 @@ void drawWindow(){
       if((x >=200 && x <= 300) && (y >= 200 && y <= 250)){
           hideData("x.bmp", "test.txt");
       }
-      else if((x >=300 && x <= 400) && (y >= 200 && y <= 250)){
+      else if((x >=200 && x <= 300) && (y >= 300  && y <= 350)){
         extract("stego.bmp");
       }
-      getch();
     }
+    
 }
