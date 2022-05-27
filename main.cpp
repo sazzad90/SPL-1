@@ -7,8 +7,8 @@ int main ()
 
     drawWindow();
     //hideData("x.bmp", "test.txt");
-//   drawWindow();
-  // extract("stego.bmp");
+    //drawWindow();
+    //extract("stego.bmp");
    
    return 0;
 }

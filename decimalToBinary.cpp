@@ -1,7 +1,7 @@
 #include "header.h"
 #include<cmath>
 using namespace std;
-void decimalToBinary(int pixels[][1000][3],int widthOfImage,int heightOfImage)
+void decimalToBinary(int*** pixels,int widthOfImage,int heightOfImage)
 {
     int number;
     int  binary[20]={0};
@@ -17,7 +17,7 @@ void decimalToBinary(int pixels[][1000][3],int widthOfImage,int heightOfImage)
        number = pixels[i][j][index];
        l=0;                  //initializer index for mini
 
-       if(number == 0) pixels[i][j][index++] = 00000000;
+       if(number == 0) pixels[i][j][index++] = 0;   ////
 
        else{
        while(number>0)

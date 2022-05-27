@@ -4,6 +4,7 @@
         "iomanip": "cpp",
         "iosfwd": "cpp",
         "unordered_map": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "*.tcc": "cpp"
     }
 }

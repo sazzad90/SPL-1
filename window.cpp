@@ -14,7 +14,7 @@ void drawWindow(){
     int click[2];
     int x,y;
 
-    initwindow(800, 600, "");
+    initwindow(700, 500, "Stanzhswxut");
 
     setcolor(LIGHTGRAY);
     rectangle(200,200,300,250);
@@ -24,7 +24,7 @@ void drawWindow(){
     setcolor(BLACK);
     setbkcolor(LIGHTGRAY);
     settextstyle(3,4, 3);
-    outtextxy(280, 240, "Encode");
+    outtextxy(280, 240, "Hide");
     
 
     setcolor(LIGHTGRAY);
@@ -35,18 +35,22 @@ void drawWindow(){
      setcolor(BLACK);
     setbkcolor(LIGHTGRAY);
     settextstyle(3,4, 3);
-    outtextxy(280, 340, "Decode");
+    outtextxy(280, 340, "Extract");
+  
 
     while(1){
       getMouseClick(click);
-      x = click[1];
-      y = click[0];
-      if((x >=200 && x <= 300) && (y >= 200 && y <= 250)){
-          hideData("x.bmp", "test.txt");
-      }
-      else if((x >=200 && x <= 300) && (y >= 300  && y <= 350)){
-        extract("stego.bmp");
+      if(x != click[1] && y != click[0]){
+        x = click[1];
+        y = click[0];
+        if((x >=200 && x <= 300) && (y >= 200 && y <= 250)){
+            hideData("fifthPPM.ppm", "test.txt");
+        }
+        else if((x >=200 && x <= 300) && (y >= 300  && y <= 350)){
+          extract("stego.ppm");
+        }
       }
     }
+  
     
 }

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void binaryToDecimal(int pixels[][1000][3], int width, int height)
+void binaryToDecimal(int*** pixels, int width, int height)
 {
 
     for(int i=0;i<height;i++)
