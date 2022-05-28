@@ -13,7 +13,6 @@
 
 #include "headerstructure.cpp"
 #include "ppmStructure.cpp"  
-#include "ShowInfo.cpp"
 #include "checkfile.cpp"
 #include "PixelData.cpp"
 #include "writeimage.cpp"
@@ -34,14 +33,14 @@ using namespace std;
 //void checkFile(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader);
 void readImage(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader, bmpColorTable colorTable, const char* imageFile, int pixels[][1000][3]);
 void copyImageFile();
-ppmFile* readPPMImage(const char *imageFile, int pixels[][1000][3]);  //
+ppmFile* readPPMImage(const char *imageFile, int*** pixels);  //
 void writeImage(const char *imageName, ppmFile *imageFile);  //
-int textToBinary(const char *textPath, int binary[], int binaryLength);
-void binaryToText(int binaryLength,int binary[]);
-void binaryToDecimal(int pixels[][1000][3], int width, int height);
-void decimalToBinary(int pixels[][1000][3],int widthOfImage,int heightOfImage);
-void hideData(const char *imageFile, const char *textFile);
-void extract(const char *stegoImage);
+int textToBinary(const char *textPath, int* binary, int binaryLength);
+void binaryToText(int binaryLength,int* binary);
+void binaryToDecimal(int*** pixels, int width, int height);
+void decimalToBinary(int*** pixels,int widthOfImage,int heightOfImage);
+int hideData(const char *imageFile, const char *textFile);
+void extract(const char *stegoImage, int imageFormat);
 void getMouseClick(int click[]);
 void drawWindow();
 

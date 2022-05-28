@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int textToBinary(const char *textPath, int binary[], int binaryLength)
+int textToBinary(const char *textPath, int* binary, int binaryLength)
 {
     string message,space;
     string input;
@@ -27,7 +27,7 @@ int textToBinary(const char *textPath, int binary[], int binaryLength)
     int i=0, j=0, length=0;
     int number;
     int mini[50]={0};
-
+    
     for(int i=0;i<message.length();i++)
     {
         number=message[i];

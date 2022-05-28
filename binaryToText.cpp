@@ -4,37 +4,43 @@
 
 using namespace std;
 
-void binaryToText(int binaryLength,int binary[])
+void binaryToText(int binaryLength,int* binary)
 {
-    int decimal[1000]={0};
+    int* decimal = new int[1000000];
+  //  int decimal[1000]={0};
     int index = 0, cnt = 7;
-
+   
+  
     for(int i=0; i<binaryLength; i++)
     {
         int binaryCnt = 0;
         while(binaryCnt <= 7){
             if(binaryCnt==6)
             {
-              //  binary[i] = decryptText(binary[i]);          //decrypting message again altering 0 and 1 at every 7th place
+              
             }
             decimal[index] += pow(2,cnt) * binary[i];
             cnt--;
             i++;
             binaryCnt++;
         }
+        cout<<(char)decimal[index];
         i--;
         cnt = 7;       //start of a binary code
         index++;
         }
-    char text[10000];  //array to store converted message
-
+      //  string text;
+    char* text = new char[10000000];  
     for(int i=0;i<index;i++)
     {
-    text[i]=decimal[i];
+    
+    //text[i]=decimal[i];
     }
+    
     text[index]='\0';
 
-    cout<<text<<endl;
+   //cout<<text<<endl;
+  //  cout<<"Text size: "<<text.length()<<endl;
 
 }
 

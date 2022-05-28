@@ -3,7 +3,7 @@
 using namespace std;
 
 
-void extract(const char *stegoImage){
+void extract(const char *stegoImage, int imageFormat){
     
     int*** pixels2 = new int** [3000];
     for(int i = 0;i<3000;i++){
@@ -12,7 +12,8 @@ void extract(const char *stegoImage){
             pixels2[i][j] = new int[3];
         }
     }
- /*   
+ 
+ if(imageFormat == 0){
     bmpSignature signature;
     bmpFileHeader fileHeader;
     bmpInfoHeader infoHeader;
@@ -54,7 +55,7 @@ void extract(const char *stegoImage){
     decimalToBinary(pixels2,width,height);
 
 //************reading the encoded text from pixels**********/
-/*
+
 int binary[100000]={};
 int final_flag = 1;
 int i=0,j=0,k=0;
@@ -101,28 +102,23 @@ while(final_flag != 0){
 }
 
 //***********converting binary into text**************/
-/*
+
 cout<<"After extraction :: ";
 binaryToText(index-15,binary);
-*/
-    
+
+ }
+
+
+ else if(imageFormat == 1){
   //  ppmFile* input;
      
     ppmFile* inputFile = readPPMImage(stegoImage,pixels2);
 
-cout<<"after second read: "<<endl;
-    for(int i = 0;i<4;i++){
-cout<<pixels2[0][i][0]<< " "<<pixels2[0][i][1]<<" "<<pixels2[0][i][2]<<"   ";
-	}
-	cout<<endl;
     decimalToBinary(pixels2,inputFile->col,inputFile->row);
     
         //**********  hiding text into image  **********// 
 
-    for(int j = 0;j<20;j++){
-            cout<<pixels2[0][j][0]<<" "<<pixels2[0][j][1]<<" "<<pixels2[0][j][2]<<"   ";
-        }
-    cout<<endl;
+
 
 //************reading the encoded text from pixels**********//
 
@@ -172,12 +168,9 @@ while(final_flag != 0){
 }
 
 //***********converting binary into text**************//
-for(int i = 0;i<40;i++){
-    cout<<binary[i]<<" ";
-}
 cout<<"After extraction :: ";
 binaryToText(index-15,binary);
 
-     
+ }    
 }
 

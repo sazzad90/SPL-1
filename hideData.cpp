@@ -5,7 +5,7 @@ using namespace std;
 
 //int pixels[1000][1000][3]={0};
 
-void hideData(const char *imageFile, const char *textFile){
+int hideData(const char *imageFile, const char *textFile){
 int*** pixels = new int** [3000];
     for(int i = 0;i<3000;i++){
         pixels[i] = new int* [3000]; 
@@ -14,24 +14,22 @@ int*** pixels = new int** [3000];
         }
     }
 
+    int imageFormat;
+
 //**********  reading text file into binary  **********// 
     int binaryLength=0;
-    int binary[100000]={};
-    binaryLength = textToBinary(textFile, binary, binaryLength);
+    //int binary[100000]={};
+    int* binary = new int[100000000];
 
-    for(int i = 0;i<binaryLength;i++){
-        cout<<binary[i]<<" ";
-    }
-    cout<<endl;
+    binaryLength = textToBinary(textFile, binary, binaryLength);
+    cout<<"Length of text(in binary): "<<binaryLength<<endl;
     string fileName = imageFile;
-    std :: cout<<fileName<<endl;
+   
     int pos = fileName.find(".");
     string subName = fileName.substr(pos+1);
-    std :: cout<<subName;
-
-
 
     if(!subName.compare("bmp")){
+        imageFormat = 0;
 
 //**********  reading image file into binary  **********// 
 
@@ -45,7 +43,7 @@ int*** pixels = new int** [3000];
      ofstream outputFile;
 
     inputFile.open(imageFile, ios:: binary);
-    outputFile.open("stego.bmp", ios :: binary);
+    outputFile.open("stegoBMP.bmp", ios :: binary);
 
     if(inputFile.eof()) throw runtime_error("File not found");
     inputFile.seekg(0,ios::beg);
@@ -64,6 +62,13 @@ int*** pixels = new int** [3000];
     int width=infoHeader.width;
     int height= infoHeader.height;
 
+    if(binaryLength+15 > (height*width*3)){
+        return 3;
+    }
+
+    cout<<"Image details:: "<<endl;
+    cout<<"Format: .bmp"<<endl;
+    cout<<"Row size: "<<height<<"   Column size: "<<width<<endl;
     for(int i=0;i<height;i++)
     {
         for(int j=0;j<width;j++)
@@ -116,8 +121,6 @@ int*** pixels = new int** [3000];
                 pixels[i][j][c] = pixels[i][j][c] + 1;
             }
         }
-
-    //    cout<<pixels[i][j][c]<<endl;         modified pixel
         c++;
         index++;
      }
@@ -145,19 +148,29 @@ int*** pixels = new int** [3000];
 
     inputFile.close();
     outputFile.close();
-
-    std :: cout<<"Stego image is created."<<endl;
-    std :: cout<<endl;
+    
+    cout<<endl;
+    cout<<"Stego image is created."<<endl;
+    cout<<endl;
     }
 
+
+
     else if(!subName.compare("ppm")){
+        imageFormat = 1;
       
     ppmFile* inputFile;
     inputFile = readPPMImage(imageFile, pixels);
-
-
+    cout<<"Image details:: "<<endl;
+    cout<<"Format: .ppm"<<endl;
+    cout<<"Row size: "<<inputFile->row<<"   Column size: "<<inputFile->col<<endl;
+    
+    if(binaryLength+15 > (inputFile->row)*(inputFile->col)*3){
+        return 3;
+    }
+    
     decimalToBinary(pixels,inputFile->col,inputFile->row);
-
+    
   
         //**********  hiding text into image  **********// 
      int index = 0;
@@ -175,14 +188,7 @@ int*** pixels = new int** [3000];
 
         int temp = pixels[i][j][c];
         int divisor = 10000000;
-      /*  for(int k = 0; k < 7; k++){
-            temp = temp%divisor;
-            divisor = divisor/10;
-        }
-        */
        temp = temp % 10;
-
-     //   cout<<binary[index]<<" "<<temp<<endl;     modifying data
 
         if(temp == binary[index]){
 
@@ -200,26 +206,14 @@ int*** pixels = new int** [3000];
         c++;
         index++;
      }
-
-    cout<<"before writing: "<<endl;
-        for(int j = 0;j<20;j++){
-            cout<<pixels[0][j][0]<<" "<<pixels[0][j][1]<<" "<<pixels[0][j][2]<<"   ";
-        }
-    cout<<endl;
-    
     
     //**********  converting binary pixels into decimal  **********// 
      binaryToDecimal(pixels, inputFile->col, inputFile->row);
-    
-    for(int i = 0;i<4;i++){
-cout<<pixels[0][i][0]<< " "<<pixels[0][i][1]<<" "<<pixels[0][i][2]<<"   ";
-	}
-	cout<<endl;
 
 
     FILE *outputFile;    
 
-	outputFile = fopen("stego.ppm", "w");
+	outputFile = fopen("stegoPPM.ppm", "w");
 	if (!outputFile) //if file creation fails 
 	{
 		printf("Error: Could not create the file!\n");
@@ -230,10 +224,6 @@ cout<<pixels[0][i][0]<< " "<<pixels[0][i][1]<<" "<<pixels[0][i][2]<<"   ";
 	fprintf(outputFile, "P3"); /*Magic Number*/
 	fprintf(outputFile, "   %d %d   ", inputFile->col, inputFile->row);  /*columns and rows*/
 	fprintf(outputFile, "  %d  ", inputFile->colorDepth); /*Maximum color depth*/
-
-//
-int rkb =0;
-
 //
 												  //writing image body
 
@@ -241,19 +231,9 @@ int rkb =0;
 		for(int j = 0;j< inputFile->col;j++){
             fprintf(outputFile, "    %d %d %d    ", pixels[i][j][0], pixels[i][j][1], pixels[i][j][2]);
         }}
-
-        /*
-
-	for (int i = 0; i < (inputFile->row * inputFile->col); i++){
-        if(rkb<20)
-        {
-         		cout<<inputFile->body[i].R<< " "<<inputFile->body[i].G<<" "<< inputFile->body[i].B;
-rkb++;
-        }
-		fprintf(outputFile, "    %d %d %d    ", inputFile->body[i].R, inputFile->body[i].G, inputFile->body[i].B);
-    }
-    */
-    
+     cout<<endl;
+     cout<<"Stego image is created."<<endl;
+     cout<<endl;
      	fclose(outputFile); /*closing the created file*/
     }
 
@@ -263,6 +243,6 @@ rkb++;
         std :: cout<<"Image file format is not recognized..."<<endl;  
     }
 
-
+return imageFormat;
 }
 

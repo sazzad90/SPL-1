@@ -46,7 +46,6 @@ ppmFile* readPPMImage(const char *imageFile, int*** pixels)
 
 	//reading and checking the format of the image
 	fgets(imageFormat, sizeof(imageFormat), fp);
-	cout<<imageFormat<<endl;
 
 	if (imageFormat[0] != 'P' || imageFormat[1] != '3') {
 		printf("Error: Image format should be P3!\n");
@@ -56,9 +55,7 @@ ppmFile* readPPMImage(const char *imageFile, int*** pixels)
 	//reading the size of the image and maximum color
 	fscanf(fp, "   %d %d   ", &imagePtr->col, &imagePtr->row);
 	fscanf(fp, "  %d  ", &imagePtr->colorDepth);
-
-    cout<<imagePtr->col<<" "<<imagePtr->row<<endl;
-	cout<<imagePtr->colorDepth<<endl;
+	
 	//allocating dynamic memory for pixel data 
 	imagePtr->body = (pixel*)malloc(imagePtr->row * imagePtr->col * sizeof(pixel));
 	if (!imagePtr) {
