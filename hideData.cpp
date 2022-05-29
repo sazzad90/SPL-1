@@ -18,11 +18,11 @@ int*** pixels = new int** [3000];
 
 //**********  reading text file into binary  **********// 
     int binaryLength=0;
-    //int binary[100000]={};
     int* binary = new int[100000000];
 
     binaryLength = textToBinary(textFile, binary, binaryLength);
     cout<<"Length of text(in binary): "<<binaryLength<<endl;
+    cout<<endl;
     string fileName = imageFile;
    
     int pos = fileName.find(".");
@@ -32,7 +32,6 @@ int*** pixels = new int** [3000];
         imageFormat = 0;
 
 //**********  reading image file into binary  **********// 
-
     bmpSignature signature;
     bmpFileHeader fileHeader;
     bmpInfoHeader infoHeader;
@@ -43,6 +42,13 @@ int*** pixels = new int** [3000];
      ofstream outputFile;
 
     inputFile.open(imageFile, ios:: binary);
+    if(!inputFile){
+          cout<<endl;
+        cout<<"Image file is not found in the directory."<<endl;
+        cout<<"Data hiding cannot be done."<<endl;
+          cout<<endl;
+        return 4;
+    }
     outputFile.open("stegoBMP.bmp", ios :: binary);
 
     if(inputFile.eof()) throw runtime_error("File not found");
@@ -63,7 +69,8 @@ int*** pixels = new int** [3000];
     int height= infoHeader.height;
 
     if(binaryLength+15 > (height*width*3)){
-        return 3;
+        cout<<"Text size is too large to hide into the image."<<endl;
+        return 4;
     }
 
     cout<<"Image details:: "<<endl;
@@ -146,12 +153,12 @@ int*** pixels = new int** [3000];
     inputFile.read((char*)&colorTable,sizeof(colorTable));
     outputFile.write((char*)&colorTable,sizeof(colorTable));
 
+     cout<<endl;
+    cout<<"Stego image is created."<<endl;
+
     inputFile.close();
     outputFile.close();
     
-    cout<<endl;
-    cout<<"Stego image is created."<<endl;
-    cout<<endl;
     }
 
 
@@ -166,7 +173,8 @@ int*** pixels = new int** [3000];
     cout<<"Row size: "<<inputFile->row<<"   Column size: "<<inputFile->col<<endl;
     
     if(binaryLength+15 > (inputFile->row)*(inputFile->col)*3){
-        return 3;
+         cout<<"Text size is too large to hide into the image."<<endl;
+        return 4;
     }
     
     decimalToBinary(pixels,inputFile->col,inputFile->row);
@@ -233,14 +241,14 @@ int*** pixels = new int** [3000];
         }}
      cout<<endl;
      cout<<"Stego image is created."<<endl;
-     cout<<endl;
      	fclose(outputFile); /*closing the created file*/
     }
 
 
 
     else{
-        std :: cout<<"Image file format is not recognized..."<<endl;  
+        std :: cout<<"Image file format is not recognized..."<<endl; 
+        return 4; 
     }
 
 return imageFormat;

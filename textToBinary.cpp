@@ -9,6 +9,13 @@ int textToBinary(const char *textPath, int* binary, int binaryLength)
     string input;
     ifstream file(textPath);
 
+    if(!file){
+        cout<<endl;
+         cout<<"Text file not found in the directory."<<endl;
+		 cout<<"Data hiding cannot be done."<<endl;
+         cout<<endl;
+         return 0;
+    }
     while(file)
     {
     getline(file, input);
@@ -18,9 +25,10 @@ int textToBinary(const char *textPath, int* binary, int binaryLength)
         message+=input;
     }
     }
-    cout<<"Before hiding :: ";
-    cout<<message<<endl;
     cout<<endl;
+    cout<<"Text message: "<<endl;
+    cout<<message<<endl;
+    
 
     file.close();
 

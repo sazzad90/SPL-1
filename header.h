@@ -11,30 +11,23 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "headerstructure.cpp"
+#include "bmpStructure.cpp"
 #include "ppmStructure.cpp"  
-#include "checkfile.cpp"
-#include "PixelData.cpp"
-#include "writeimage.cpp"
 #include "textToBinary.cpp"
 #include "binaryToText.cpp"
 #include "decimalToBinary.cpp"
 #include "binaryToDecimal.cpp"
 #include "hideData.cpp"
 #include "extract.cpp"
-#include "getMouseClick.cpp"
-#include "window.cpp"
+
 
 using namespace std;
 
 
-
-//void readHeaderAndPrint(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader);
-//void checkFile(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader);
 void readImage(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader, bmpColorTable colorTable, const char* imageFile, int pixels[][1000][3]);
-void copyImageFile();
-ppmFile* readPPMImage(const char *imageFile, int*** pixels);  //
-void writeImage(const char *imageName, ppmFile *imageFile);  //
+//void copyImageFile();
+ppmFile* readPPMImage(const char *imageFile, int*** pixels);  
+//void writeImage(const char *imageName, ppmFile *imageFile);  
 int textToBinary(const char *textPath, int* binary, int binaryLength);
 void binaryToText(int binaryLength,int* binary);
 void binaryToDecimal(int*** pixels, int width, int height);

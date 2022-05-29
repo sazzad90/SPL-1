@@ -5,44 +5,5 @@ they are-
 1.BMP 2.PPM
 this is my secret message.this project will hide it into the image file and retrieve it while data extraction from the image.
 THANK YOU
-of the common tasks in visualization work, since different software packages
-and hardware units require different file formats. If there were N different file
-formats, and we wanted to be able to convert any one of these formats into any
-of the other formats, we would have to have N x(N - 1) conversion programs -
-or about N2
-. The PPM idea is that we have one format that any other format
-can be converted into and then write N programs to convert all formats into
-PPM and then N more programs to convert PPM files into any format. In this
-way, we need 
-The PPM format is not intended to be an archival format, so it does not need
-to be too storage efficient. Thus, it is one of the simplest formats. Nevertheless,
-it will still serve to illustrate features common to many image file formats.
-Most file formats are variants of the organization shown in Figure 2.1. The
-file will typically contain some indication of the file type, a block of header or
-control information, and the image description data. The header block contains
-descriptive information necessary to interpret the data in the image data block.
-The image data block is usually an encoding of the pixmap or bitmap that
-describes the image. Some formats are fancier, some are extremely complex,
-but this is the basic layout. Also, most (but not all) formats have some kind of
-identifier called the magic number at the start, that identifies the file type.
-Often the magic number is not a number at all, but is a string of characters.
-But in any case, that is what it is called.
-The header for a PPM file consists of the information shown in Figure 2.2,
-stored as ASCII characters in consecutive bytes in the file. The image width
-and height determine the length of a scanline, and the number of scanlines. The
-maximum color value cannot exceed 255 (8 bits of color information) but may
-be less, if less than 8 bits of color information per primary are available. In the
-header, all white-space (blanks, carriage returns, newlines, tabs, etc.) is ignored,
-so the program that writes the file can freely intersperse spaces and line breaks.
-Exceptions to this are that following an end-of-line character (decimal 10 or
-hexadecimal 0A) in the PPM header, the character # indicates the start of a
-text comment, and another end-of-line character ends the comment. Also, the
-maximum color value at the end of the header must igure 2.3a shows a red cube on a mid-grey background,
-and Figure 2.3b gives the first several lines of a hexadecimal dump (text display)
-of the contents of the PPM file describing the image. Each line of this dump
-has the hexadecimal byte count on the left, followed by 16 bytes of hexadecimal
-information from the file, and ends with the same 16 bytes of information displayed in ASCII (non-printing characters are displayed using the character !).
-Except for the first line of the dump, which contains the file header information,
-the ASCII information is meaningless, since the image data in the file is binary
-encoded. A line in the dump containing only a * indicates a sequence of lines
-all containing exactly the same information as the line above.
+
+

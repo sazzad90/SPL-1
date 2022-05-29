@@ -38,7 +38,14 @@ ppmFile* readPPMImage(const char *imageFile, int*** pixels)
 
 	//opening ppm file in read-binary mode
 	fp = fopen(imageFile, "r");
-	if (!fp) //if the file failed to opened 
+	if(!fp){
+		  cout<<endl;
+        cout<<"Image file is not found in the directory."<<endl;
+		 cout<<"Data hiding cannot be done."<<endl;
+		   cout<<endl;
+        return nullptr;
+    }
+	if (!fp) //if the file failed to opened  
 	{
 		printf("Error: File opening failed!\n");
 		exit(EXIT_FAILURE);
@@ -78,18 +85,7 @@ int x,y,z;
 		}
 	}
 	
-/*
-	for (int i = 0; i < imagePtr->row * imagePtr->col; ++i){
-		cout<<imagePtr->body[i].R<<" "<<imagePtr->body[i].G<<" "<<imagePtr->body[i].B<<"  ";
-		
-	}*/
 
-	/*for(int i = 0;i < imagePtr->row;i++){
-		for(int j = 0;j < imagePtr->col; j++){
-			cout<<pixels[i][j][0]<<" "<<pixels[i][j][1]<<" "<<pixels[i][j][2]<<"  ";
-		}
-	}
-	*/
 	fclose(fp); 
 	return imagePtr; 
 }

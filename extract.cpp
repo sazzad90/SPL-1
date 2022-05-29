@@ -25,6 +25,14 @@ void extract(const char *stegoImage, int imageFormat){
 
     inputFile.open(stegoImage, ios:: binary);
 
+    if(!inputFile){
+        cout<<endl;
+        cout<<"Image file is not found in the directory."<<endl;
+        cout<<"Data extraction cannot be done."<<endl;
+        cout<<endl;
+        return ;
+    }
+
     if(inputFile.eof()) throw runtime_error("File not found");
     inputFile.seekg(0,ios::beg);
 
@@ -100,6 +108,8 @@ while(final_flag != 0){
     }
     
 }
+ cout<<endl;
+ cout<<"Data extraction is done."<<endl;
 
 //***********converting binary into text**************/
 
@@ -168,7 +178,8 @@ while(final_flag != 0){
 }
 
 //***********converting binary into text**************//
-cout<<"After extraction :: ";
+cout<<endl;
+cout<<"\nAfter extraction :: "<<endl;
 binaryToText(index-15,binary);
 
  }    
