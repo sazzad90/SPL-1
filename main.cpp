@@ -110,7 +110,7 @@ while(1){
        cin>>choice3;
        cout<<endl;
        if(choice3[0] != '1'){
-             break;
+             break; 
        }
 }
 

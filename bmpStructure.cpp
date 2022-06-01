@@ -8,7 +8,7 @@ struct bmpSignature
 {
     unsigned char signatureData[2]; //BM is .bmp file
 };
-
+ 
 //contains bmp file header information
 struct bmpFileHeader
 {

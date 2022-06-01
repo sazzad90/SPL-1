@@ -1,5 +1,6 @@
 #include "header.h"
 #include<fstream>
+#include<bits/stdc++.h>
 
 using namespace std;
 
@@ -28,6 +29,8 @@ int textToBinary(const char *textPath, int* binary, int binaryLength)
     cout<<endl;
     cout<<"Text message: "<<endl;
     cout<<message<<endl;
+    cout<<endl;
+    cout<<endl;
     
 
     file.close();
@@ -65,13 +68,56 @@ int textToBinary(const char *textPath, int* binary, int binaryLength)
         }
 }
 
-    binaryLength = length;//length of binary array
+binaryLength = length;
+/*
+    for(int i= 0;i<binaryLength;i++){
+        cout<<binary[i];
+    }
+    cout<<endl;
+    */
 
-    //************Adding Delimiter**************//
-    for(int i = 0;i<15; i++){
-        binary[binaryLength++] = 1;
+    //length of binary array
+
+  
+    char inputMessage[binaryLength]={};
+    int x;
+    for(x = 0;x<binaryLength;x++){
+          inputMessage[x] =(char) binary[x] + '0';
+          
+    }
+    inputMessage[x] = '\0';
+
+
+    
+int inputMessage_size = sizeof(inputMessage) / sizeof(char);
+string inputMessageString="";
+
+for(i = 0; i < inputMessage_size; i++)  
+   {  
+    /** retrieving and merging the value of character array on position 'i'*/    
+        inputMessageString += inputMessage[i];  
+    }  
+
+    //encryption
+   cout<<"Before Encrytion : "<<inputMessageString<<endl;
+    cout<<endl;
+   string cipherText = des(inputMessageString,true);
+   
+   cout<<"After Encryption : "<<endl;
+   cout<<"Cipher Text : "<<cipherText<<endl;
+
+    for(int i = 0;i<cipherText.length();i++){   /////
+         binary[i] = (int)cipherText[i] - '0' ;
     }
 
+    binaryLength = cipherText.length();
+    
+    
+      for(int i = 0;i<15; i++){
+        binary[binaryLength++] = 1;
+       
+    }
+    
     binaryLength = binaryLength - 1;  //length of binary array after adding delimiter
 
     return binaryLength;

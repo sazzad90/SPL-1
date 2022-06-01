@@ -21,6 +21,7 @@ int*** pixels = new int** [3000];
     int* binary = new int[100000000];
 
     binaryLength = textToBinary(textFile, binary, binaryLength);
+    //
     cout<<"Length of text(in binary): "<<binaryLength<<endl;
     cout<<endl;
     string fileName = imageFile;

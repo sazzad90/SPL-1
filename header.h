@@ -12,7 +12,8 @@
 #include <time.h>
 
 #include "bmpStructure.cpp"
-#include "ppmStructure.cpp"  
+#include "ppmStructure.cpp" 
+#include "DES.cpp" 
 #include "textToBinary.cpp"
 #include "binaryToText.cpp"
 #include "decimalToBinary.cpp"
@@ -27,7 +28,9 @@ using namespace std;
 void readImage(bmpSignature signature,bmpFileHeader fileHeader,bmpInfoHeader infoHeader, bmpColorHeader colorHeader, bmpColorTable colorTable, const char* imageFile, int pixels[][1000][3]);
 //void copyImageFile();
 ppmFile* readPPMImage(const char *imageFile, int*** pixels);  
-//void writeImage(const char *imageName, ppmFile *imageFile);  
+//void writeImage(const char *imageName, ppmFile *imageFile); 
+string des_process(string message,string key,bool encrypt);
+string des(string message, bool flag);
 int textToBinary(const char *textPath, int* binary, int binaryLength);
 void binaryToText(int binaryLength,int* binary);
 void binaryToDecimal(int*** pixels, int width, int height);

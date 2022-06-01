@@ -1,9 +1,0 @@
-welcome to "steganography"
-this project reflects the application of image steganography
-two image formats are implemented for creating stego image for data hiding
-they are-
-1.BMP 2.PPM
-this is my secret message.this project will hide it into the image file and retrieve it while data extraction from the image.
-THANK YOU
-
-
